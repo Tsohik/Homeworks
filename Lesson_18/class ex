@@ -1,0 +1,55 @@
+class BankAccount:
+    def __init__(self, account_number, balance):
+        self.account_number = account_number
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+
+    def withdraw(self, amount):
+        if amount > 0:
+            if amount <= self.balance:
+                self.balance -= amount
+
+    def get_balance(self):
+        return self.balance
+
+class SavingsAccount(BankAccount):
+    def __init__(self, account_number, balance, interest_rate):
+        super().__init__(account_number, balance)
+        self.interest_rate = interest_rate
+
+    def deposit(self, amount):
+        super().deposit(amount)
+        self.balance += self.balance * self.interest_rate
+
+class CheckingAccount(BankAccount):
+    def __init__(self, account_number, balance, overdraft_fee):
+        super().__init__(account_number, balance)
+        self.overdraft_fee = overdraft_fee
+
+    def withdraw(self, amount):
+        if amount > 0:
+            if amount <= self.balance:
+                self.balance -= amount
+            else:
+                self.balance -= (amount + self.overdraft_fee)
+
+basic_account = BankAccount("123456", 100.0)
+savings_account = SavingsAccount("567891", 100.0, 0.05)
+checking_account = CheckingAccount("234567", 100.0, 10.0)
+
+basic_account.deposit(50)
+basic_account.withdraw(30)
+
+savings_account.deposit(50)
+savings_account.withdraw(20)
+
+checking_account.deposit(100)
+checking_account.withdraw(150)
+
+print("Final Balances:")
+print(f"Basic Account: ${basic_account.get_balance()}")
+print(f"Savings Account: ${savings_account.get_balance()}")
+print(f"Checking Account: ${checking_account.get_balance()}")
