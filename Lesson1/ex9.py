@@ -1,4 +1,4 @@
-# Append new string in the middle of a given (even number of characters) string Example:
+# Append new string in the middle of a given (even number of characters) string.
 
 homework9="Armen"
 new="lol"
