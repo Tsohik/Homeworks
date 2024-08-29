@@ -1,0 +1,42 @@
+
+from abc import ABC, abstractmethod
+
+class MusicalInstrument(ABC):
+    @abstractmethod
+    def play_sound(self):
+        pass
+
+    @abstractmethod
+    def get_description(self):
+        pass
+
+class Piano(MusicalInstrument):
+    def __init__(self, brand: str, number_of_keys: int):
+        self.brand = brand
+        self.number_of_keys = number_of_keys
+
+    def play_sound(self):
+        return "La La La"
+
+    def get_description(self):
+        return f" A {self.brand} piano with {self.number_of_keys} keys"
+
+class Guitar(MusicalInstrument):
+    def __init__(self, brand: str, number_of_strings: int):
+        self.brand = brand
+        self.number_of_strings = number_of_strings
+
+    def play_sound(self):
+        return "Ding Ding"
+
+    def get_description(self):
+        return f" A {self.brand} guitar with {self.number_of_strings} strings"
+
+piano = Piano(brand="Yamaha", number_of_keys=88)
+guitar = Guitar(brand="Fender", number_of_strings=6)
+
+print(piano.get_description())
+print(f"Piano sound: {piano.play_sound()}")
+
+print(guitar.get_description())
+print(f"Guitar sound: {guitar.play_sound()}")
