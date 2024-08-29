@@ -1,0 +1,45 @@
+class PlayingCard:
+    RANK_VALUE = {
+        'Ace': 2,
+        'King': 1
+    }
+
+    def __init__(self, rank, suit):
+        self.rank = rank
+        self.suit = suit
+
+    def __str__(self):
+        return f"Card: {self.rank}"
+
+    def __eq__(self, other):
+         return self.rank == other.rank and self.suit == other.suit
+
+    def __ne__(self, other):
+        return self.rank != other.rank and self.suit != other.suit
+
+    def __lt__(self, other):
+        return PlayingCard.RANK_VALUE[self.rank] < PlayingCard.RANK_VALUE[other.rank]
+
+    def __le__(self, other):
+        return PlayingCard.RANK_VALUE[self.rank] <= PlayingCard.RANK_VALUE[other.rank]
+
+    def __gt__(self, other):
+        return PlayingCard.RANK_VALUE[self.rank] > PlayingCard.RANK_VALUE[other.rank]
+
+    def __ge__(self, other):
+        return PlayingCard.RANK_VALUE[self.rank] >= PlayingCard.RANK_VALUE[other.rank]
+
+    def __repr__(self):
+        return f"{self.rank} of {self.suit}"
+
+
+card1 = PlayingCard("Ace", "Hearts")
+card2 = PlayingCard("King", "Spades")
+print("Card1:", card1)
+print("Card2", card2)
+print("Card1 == Card2:", card1 == card2)
+print("Card1 != Card2:", card1 != card2)
+print("Card1 < Card2:", card1 < card2)
+print("Card 1 <= Card 2:", card1 <= card2)
+print("Card 1 > Card 2:", card1 > card2)
+print("Card 1 >= Card 2:", card1 >= card2)
