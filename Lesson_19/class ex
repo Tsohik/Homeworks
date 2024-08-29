@@ -1,0 +1,27 @@
+
+class TemperatureSensor:
+    def __init__(self, temperature=0):
+        self.__temperature = temperature
+        self.temperature = temperature
+
+    @property
+    def temperature(self):
+        return self.__temperature
+
+    @temperature.setter
+    def temperature(self, value):
+        if not 0 <= value <= 100:
+            raise ValueError("Temperature must be between 0 and 100.")
+        self.__temperature = value
+
+sensor = TemperatureSensor()
+print(sensor.temperature)
+
+try:
+    sensor.temperature = 101
+except ValueError as e:
+    print(e)
+try:
+    sensor.temperature = -1
+except ValueError as e:
+    print(e)
